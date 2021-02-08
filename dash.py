@@ -1,3 +1,7 @@
+git add dash.py / Pipfile
+git commit -am 'added dash.py / Pipfile'
+git push heroku master
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html

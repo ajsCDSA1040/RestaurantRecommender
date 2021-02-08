@@ -184,4 +184,4 @@ def update_output(user, userid, n_clicks, restaurant):
                            ])
         
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server()

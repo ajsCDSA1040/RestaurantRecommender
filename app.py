@@ -132,7 +132,8 @@ def update_output(user, userid, n_clicks, restaurant):
                         var_name='restaurant',value_name='rating')
 
         # Read restaurant file
-        restaurants_text = pd.read_csv("../Jupyter Notebooks/chicago_restaurants.csv", header=0)
+        restaurants_text = pd.read_csv('chicago_restaurants.csv')
+    
 
         Restaurant_Rating_df = pd.merge(restaurants_text, melted_ratings, on = 'restaurant')
 

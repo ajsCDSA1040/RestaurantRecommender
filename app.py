@@ -5,12 +5,17 @@ from dash.dependencies import Input, Output, State
 
 import pandas as pd
 import numpy as np 
-import flask
+from flask import Flask
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-server = flask.Flask('app')
+server = Flask(__name__)
 server.secret_key = os.environ.get('secret_key', 'secret')
+
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+app = dash.Dash(name = __name__, server = server, external_stylesheets=external_stylesheets)
+app.config.supress_callback_exceptions = True
+#server = app.server
 
 #Load the data
 file = pd.read_csv('https://raw.githubusercontent.com/ajsCDSA1040/RestaurantRecommender/main/entree.csv')
@@ -30,10 +35,7 @@ def get_restaurant(index):
 def get_restaurant_city(index):
     return file[file["Index"] == index]["RestaurantCity"].values[0]
 
-#Initiate the app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-#server = app.server
+
 
 colors = {
     'background': '#111111',
